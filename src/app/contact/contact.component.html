@@ -1,0 +1,85 @@
+<div class="bradcam_area breadcam_bg overlay2">
+    <h3>contact us</h3>
+</div>
+
+<section class="contact-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="contact-title">Get in Touch</h2>
+            </div>
+            <div class="col-lg-8">
+                <form class="form-contact contact_form" action="contact_process.php" method="post" id="contactForm" [formGroup]="contactForm" (ngSubmit)="onFormSubmit()">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <textarea class="form-control w-100" name="message" id="message" cols="30" rows="9" placeholder=" Message..." formControlName="message" #message></textarea>
+                                <div *ngIf="!contactForm.get('message').valid && contactForm.get('message').touched">
+                                    <p  *ngIf="contactForm.get('message').errors?.minlength" style="color: rgb(114, 111, 111);">Message must contain at least 5 characters</p>
+                                    <p *ngIf="contactForm.get('message').errors['required']" style="color: rgb(114, 111, 111);">Message is required</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <input class="form-control valid" name="name" id="name" type="text"  placeholder="Enter your full name" formControlName="fullName" #fullName [pattern]="validName"/>
+                                <div *ngIf="!contactForm.get('fullName').valid && contactForm.get('fullName').touched">
+                                    <p *ngIf="contactForm.get('fullName').errors?.pattern" style="color:rgb(114, 111, 111);">Enter valid format for full name</p>
+                                    <p *ngIf="contactForm.get('fullName').errors['required']" style="color:rgb(114, 111, 111);">Full name is required</p>
+                                  </div>  
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <input class="form-control valid" name="email" id="email" type="email"  placeholder="Email" formControlName="email" #email/>
+                                <div *ngIf="!contactForm.get('email').valid && contactForm.get('email').touched">
+                                    <p *ngIf="contactForm.get('email').errors['email']" style="color: rgb(114, 111, 111);">Please enter a valid Email</p>
+                                    <p *ngIf="contactForm.get('email').errors['required']" style="color: rgb(114, 111, 111);">Email is required</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <input class="form-control" name="subject" id="subject" type="text" placeholder="Enter Subject" formControlName="subject" #subject/>
+                                <div *ngIf="!contactForm.get('subject').valid && contactForm.get('subject').touched">
+                                    <p *ngIf="contactForm.get('subject').errors?.minlength" style="color: rgb(114, 111, 111);">Subject must contain at least 5 characters</p>
+                                    <p *ngIf="contactForm.get('subject').errors?.maxlength" style="color: rgb(114, 111, 111);">Subject can contain at maximum 150 characters</p>
+                                    <p *ngIf="contactForm.get('subject').errors['required']" style="color: rgb(114, 111, 111);">Subject is required</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mt-3">
+                        <button type="submit" class="button button-contactForm boxed-btn" [disabled]="!contactForm.valid">Send</button>
+                    </div>
+                </form>
+                <div [@showHide]="isMessageDisplayed" class="alert alert-success">
+                    Message sent successfully.
+                </div>
+            </div>
+            <div class="col-lg-3 offset-lg-1">
+                <div class="media contact-info">
+                    <span class="contact-info__icon"><i class="ti-home"></i></span>
+                    <div class="media-body">
+                        <h3>Buttonwood, California.</h3>
+                        <p>Rosemead, CA 91770</p>
+                    </div>
+                </div>
+                <div class="media contact-info">
+                    <span class="contact-info__icon"><i class="ti-tablet"></i></span>
+                    <div class="media-body">
+                        <h3>+1 253 565 2365</h3>
+                        <p>Mon to Fri 9am to 6pm</p>
+                    </div>
+                </div>
+                <div class="media contact-info">
+                    <span class="contact-info__icon"><i class="ti-email"></i></span>
+                    <div class="media-body">
+                        <h3>support@gmail.com</h3>
+                        <p>Send us your query anytime!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

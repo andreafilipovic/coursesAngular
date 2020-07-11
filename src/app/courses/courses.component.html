@@ -1,0 +1,86 @@
+        <!-- bradcam_area_start -->
+        <div class="bradcam_area breadcam_bg overlay2">
+            <h3>Our Courses</h3>
+        </div>
+        <!-- bradcam_area_end -->
+
+    <!-- popular_courses_start -->
+    <div class="popular_courses plus_padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="section_title text-center mb-100">
+                        <h3>Popular Courses</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="course_nav col-xl-12">
+                        <nav>
+                            <ul class="nav" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active b" id="home-tab" data-toggle="tab" role="tab" (click)="getCourses(0)"
+                                        aria-controls="home" aria-selected="true">All Courses</a>
+                                </li>
+                                <li *ngFor="let cat of data.categories"  class="nav-item">
+                                    <a (click)="getCourses(cat.idCat)" class="nav-link b" id="profile-tab" data-toggle="tab" role="tab"
+                                        aria-controls="profile" aria-selected="false">{{cat.name}}</a>
+                                </li>
+                                
+                            </ul>
+                        </nav>
+                        
+                    </div>
+                    <div class="col-xl-12">
+                        <input type="text" [(ngModel)]="searchText" class="form-control d" placeholder="Search course by name">
+                    </div>
+                </div>
+                
+            </div>
+
+        </div>
+        <div class="all_courses">
+            <div class="container">
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="row">
+                             
+                                    <div *ngFor="let c of data.courses | search : searchText : 'title'" class="col-xl-4 col-lg-4 col-md-6" @fade>
+                                        <a [routerLink]="['/course_details', c.idCourse]">
+                                        <div class="single_courses">
+                                            <div class="thumb">
+                                                <a >
+                                                    <img src="../../assets/img/courses/{{c.image}}" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="courses_info">
+                                                <span>{{c.title}}</span>
+                                                <h3><a >{{c.description | shortenDescription}}</a></h3>
+                                                <div class="star_prise d-flex justify-content-between">
+                                                    <div class="star">
+                                                        <i class="flaticon-mark-as-favorite-star"></i>
+                                                        <span>({{c.stars}})</span>
+                                                    </div>
+                                                    <div class="prise">
+                                                        <span class="active_prise">{{c.date | date: 'dd.MM.yyyy'}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </a>
+                                    </div>
+                                    
+                                    <!-- <div class="col-xl-12">
+                                        <div class="more_courses text-center">
+                                            <a href="#" class="boxed_btn_rev">More Courses</a>
+                                        </div>
+                                    </div> -->
+                                </div>
+                    </div>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    

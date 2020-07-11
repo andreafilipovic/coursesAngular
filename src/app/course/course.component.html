@@ -1,0 +1,83 @@
+<div  *ngIf="course" class="courses_details_banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-6">
+                <div class="course_text">
+                       <h3>{{course.title}}</h3>
+                       <div class="rating">
+                           <i class="flaticon-mark-as-favorite-star"></i>
+                           <i class="flaticon-mark-as-favorite-star"></i>
+                           <i class="flaticon-mark-as-favorite-star"></i>
+                           <i class="flaticon-mark-as-favorite-star"></i>
+                           <i class="flaticon-mark-as-favorite-star"></i>
+                           <span>({{course.stars}})</span>
+                       </div>
+                       <div class="hours">
+                           <div class="video">
+                                <div class="single_video">
+                                       <i class="fa fa-clock-o"></i> <span>{{course.duration}}</span><br/>
+                                       <i class="fa fa-calendar-o"></i> <span>{{course.date | date: 'dd.MM.yyyy'}}</span>
+                                </div>
+                           </div>
+                       </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="course" class="courses_details_info">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-7 col-lg-7">
+                <div  class="single_courses">
+                    <h3>Description</h3>
+                    <p>{{course.description}}</p>
+                <h3 class="second_title">Course Outline</h3>
+                </div>
+                <div class="outline_courses_info">
+                        <div id="accordion">
+                                <div *ngFor="let l of course.lectures" class="card">
+                                    <div class="card-header " id="headingTwo">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link collapsed" data-parent="#accordion" aria-expanded="false" aria-controls="collapseTwo">
+                                                <i class="flaticon-question"></i> {{l.titleLecture}}
+                                            </button>
+                                        </h5>
+                                    </div>
+                                </div>  
+                            </div>
+                </div>
+            </div>
+            <div class="col-xl-5 col-lg-5">
+                <div class="courses_sidebar">
+                    <div class="video_thumb">
+                        <img src="../../assets/img/courses/{{course.image}}" alt="{{course.title}}">
+                        <a class="popup-video" href="{{course.videoLink}}">
+                            <i class="fa fa-play"></i>
+                        </a>
+                    </div>
+                    <div class="author_info">
+                        <div class="auhor_header">
+                            <div class="thumb">
+                                    <img src="../../assets/img/team/{{course.picture}}" alt="{{course.firstName}}" class="profImg">
+                            </div>
+                            <div class="name">
+                                <h3>{{course.firstName}} {{course.lastName}}</h3>
+                                <p>{{course.email}}</p>
+                            </div>
+                            <div class="description">
+                                <p>{{course.about}}</p>
+                            </div>
+                        </div>
+                        <ul>
+                            <li><a href="https://mail.google.com"> <i class="fa fa-envelope"></i> </a></li>
+                            <li><a href="https://twitter.com"> <i class="fa fa-twitter"></i> </a></li>
+                            <li><a href="https://www.linkedin.com"> <i class="ti-linkedin"></i> </a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
